@@ -1,104 +1,193 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Sparkles, Code2, Zap } from "lucide-react";
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10" />
+      {/* Animated background elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 right-1/4 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-pulse-slow" />
+      </div>
+
+      {/* Floating decorative elements */}
+      <div className="absolute top-32 right-20 animate-float hidden lg:block">
+        <div className="p-4 bg-card rounded-2xl shadow-lg rotate-12">
+          <Code2 className="text-primary" size={28} />
+        </div>
+      </div>
+      <div className="absolute bottom-40 left-20 animate-float-delayed hidden lg:block">
+        <div className="p-4 bg-card rounded-2xl shadow-lg -rotate-12">
+          <Zap className="text-accent" size={28} />
+        </div>
+      </div>
+      <div className="absolute top-1/2 right-10 animate-bounce-slow hidden lg:block">
+        <div className="p-3 bg-primary/10 rounded-full">
+          <Sparkles className="text-primary" size={20} />
+        </div>
+      </div>
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 -z-10 opacity-[0.02]" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.5)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
+        }}
+      />
 
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left content */}
-          <div className="space-y-8 animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-muted-foreground">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full animate-fade-in">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-sm font-medium text-primary">
                 Open for Opportunities
               </span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight">
+            <div className="space-y-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-[1.1]">
                 Hey There,
                 <br />
-                I'm <span className="gradient-text">Mansi</span>
+                <span className="relative">
+                  I'm{" "}
+                  <span className="relative inline-block">
+                    <span className="gradient-text">Mansi</span>
+                    <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                      <path d="M2 8.5C50 2 150 2 198 8.5" stroke="hsl(var(--accent))" strokeWidth="4" strokeLinecap="round" className="animate-draw-line"/>
+                    </svg>
+                  </span>
+                </span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
-                Final-year CSE student with strong fundamentals in programming, 
-                data structures & algorithms. Passionate about building efficient 
-                solutions and ready to contribute to innovative teams.
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-lg leading-relaxed font-light">
+                Final-year <span className="text-foreground font-medium">CSE student</span> with strong fundamentals in{" "}
+                <span className="text-primary font-medium">programming & DSA</span>. 
+                Passionate about building efficient solutions.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
               <a
                 href="#contact"
-                className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all hover:shadow-lg"
+                className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/25"
               >
-                Get In Touch
+                <span className="relative z-10 flex items-center gap-2">
+                  Get In Touch
+                  <Mail size={18} className="group-hover:rotate-12 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
                 href="#projects"
-                className="px-8 py-4 border-2 border-foreground/20 text-foreground rounded-full font-medium hover:border-primary hover:text-primary transition-all"
+                className="group px-8 py-4 border-2 border-foreground/20 text-foreground rounded-full font-medium hover:border-primary hover:text-primary transition-all hover:bg-primary/5"
               >
-                View Projects
+                <span className="flex items-center gap-2">
+                  View Projects
+                  <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
+                </span>
               </a>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-6 pt-4">
-              <a
-                href="https://github.com/Mansiikumarii"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/mansiikumarii"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:mansi15094@gmail.com"
-                className="p-3 bg-secondary rounded-full text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
-                aria-label="Email"
-              >
-                <Mail size={20} />
-              </a>
+            {/* Social Links with enhanced styling */}
+            <div className="flex items-center gap-4 pt-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
+              <span className="text-sm text-muted-foreground">Find me on</span>
+              <div className="h-px w-8 bg-border" />
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/Mansiikumarii"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  aria-label="GitHub"
+                >
+                  <Github size={20} className="group-hover:rotate-12 transition-transform" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mansiikumarii"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} className="group-hover:rotate-12 transition-transform" />
+                </a>
+                <a
+                  href="mailto:mansi15094@gmail.com"
+                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
+                  aria-label="Email"
+                >
+                  <Mail size={20} className="group-hover:rotate-12 transition-transform" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Right side - Stats */}
-          <div className="hidden lg:flex flex-col items-end gap-8 animate-fade-up delay-200">
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-card p-8 rounded-2xl text-center" style={{ boxShadow: 'var(--card-shadow)' }}>
-                <div className="stat-number">174+</div>
-                <p className="text-muted-foreground mt-2 font-medium">LeetCode Problems</p>
+          {/* Right side - Enhanced Stats */}
+          <div className="hidden lg:block animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <div className="relative">
+              {/* Main stats container */}
+              <div className="relative z-10 grid grid-cols-2 gap-5">
+                <div className="group bg-card p-8 rounded-3xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
+                  <div className="stat-number text-5xl">174+</div>
+                  <p className="text-muted-foreground mt-3 font-medium">LeetCode</p>
+                  <div className="mt-3 flex justify-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-2 h-2 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" style={{ animationDelay: `${i * 50}ms` }} />
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="group bg-card p-8 rounded-3xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20 mt-8">
+                  <div className="stat-number text-5xl">8.88</div>
+                  <p className="text-muted-foreground mt-3 font-medium">CGPA</p>
+                  <div className="mt-3 inline-flex items-center gap-1 px-3 py-1 bg-primary/10 rounded-full">
+                    <Sparkles size={12} className="text-primary" />
+                    <span className="text-xs text-primary font-medium">Excellence</span>
+                  </div>
+                </div>
+                
+                <div className="group col-span-2 bg-gradient-to-br from-primary to-primary/80 p-8 rounded-3xl text-center text-primary-foreground hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-2">
+                  <div className="text-6xl font-bold mb-2">300+</div>
+                  <p className="text-primary-foreground/80 font-medium">Problems Solved Across Platforms</p>
+                  <div className="mt-4 flex justify-center gap-2 flex-wrap">
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium">LeetCode</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium">GFG</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-xs font-medium">HackerRank</span>
+                  </div>
+                </div>
               </div>
-              <div className="bg-card p-8 rounded-2xl text-center" style={{ boxShadow: 'var(--card-shadow)' }}>
-                <div className="stat-number">8.88</div>
-                <p className="text-muted-foreground mt-2 font-medium">CGPA</p>
-              </div>
-              <div className="bg-card p-8 rounded-2xl text-center col-span-2" style={{ boxShadow: 'var(--card-shadow)' }}>
-                <div className="stat-number">300+</div>
-                <p className="text-muted-foreground mt-2 font-medium">Problems Solved</p>
-              </div>
+
+              {/* Decorative elements behind stats */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
+            </div>
+          </div>
+
+          {/* Mobile stats */}
+          <div className="lg:hidden grid grid-cols-3 gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
+              <div className="stat-number text-3xl">174+</div>
+              <p className="text-xs text-muted-foreground mt-1">LeetCode</p>
+            </div>
+            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
+              <div className="stat-number text-3xl">8.88</div>
+              <p className="text-xs text-muted-foreground mt-1">CGPA</p>
+            </div>
+            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
+              <div className="stat-number text-3xl">300+</div>
+              <p className="text-xs text-muted-foreground mt-1">Solved</p>
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-          <a href="#about" className="p-3 bg-secondary rounded-full block">
-            <ArrowDown size={20} className="text-muted-foreground" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
+          <a href="#about" className="p-2 border border-border rounded-full animate-bounce-slow">
+            <ArrowDown size={16} className="text-muted-foreground" />
           </a>
         </div>
       </div>
