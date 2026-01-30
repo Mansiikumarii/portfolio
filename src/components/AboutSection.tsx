@@ -10,12 +10,12 @@ const AboutSection = () => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
       
-      {/* Cute floating images */}
-      <div className="absolute top-20 right-24 animate-float hidden lg:block">
-        <img src={cuteRocket} alt="Rocket" className="w-20 h-20 object-contain opacity-50 drop-shadow-lg" />
+      {/* Cute floating images - visible on more screens */}
+      <div className="absolute top-12 right-4 md:top-20 md:right-24 animate-float z-10">
+        <img src={cuteRocket} alt="Rocket" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute bottom-24 left-20 animate-float-delayed hidden lg:block">
-        <img src={cuteLightbulb} alt="Lightbulb" className="w-16 h-16 object-contain opacity-50 drop-shadow-lg" />
+      <div className="absolute bottom-16 left-4 md:bottom-24 md:left-20 animate-float-delayed z-10">
+        <img src={cuteLightbulb} alt="Lightbulb" className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-lg" />
       </div>
 
       <div className="container mx-auto px-6 relative">
