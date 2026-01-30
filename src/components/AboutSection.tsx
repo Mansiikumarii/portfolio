@@ -1,4 +1,7 @@
 import { GraduationCap, MapPin, Calendar, Briefcase, Target } from "lucide-react";
+import coderGirl from "@/assets/coder-girl-character.png";
+import cuteLightbulb from "@/assets/cute-lightbulb.png";
+import cuteRocket from "@/assets/cute-rocket.png";
 
 const AboutSection = () => {
   return (
@@ -6,6 +9,14 @@ const AboutSection = () => {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
+      
+      {/* Cute floating images */}
+      <div className="absolute top-20 right-24 animate-float hidden lg:block">
+        <img src={cuteRocket} alt="Rocket" className="w-20 h-20 object-contain opacity-50 drop-shadow-lg" />
+      </div>
+      <div className="absolute bottom-24 left-20 animate-float-delayed hidden lg:block">
+        <img src={cuteLightbulb} alt="Lightbulb" className="w-16 h-16 object-contain opacity-50 drop-shadow-lg" />
+      </div>
 
       <div className="container mx-auto px-6 relative">
         <div className="max-w-5xl mx-auto">

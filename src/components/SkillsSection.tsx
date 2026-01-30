@@ -1,4 +1,9 @@
 import { Code2, Globe, Database, Wrench, Brain, Terminal, Coffee, Sparkles, Zap, Heart } from "lucide-react";
+import floatingLaptop from "@/assets/floating-laptop.png";
+import cuteCoffee from "@/assets/cute-coffee.png";
+import cuteRocket from "@/assets/cute-rocket.png";
+import cuteLightbulb from "@/assets/cute-lightbulb.png";
+import cuteCodeSymbols from "@/assets/cute-code-symbols.png";
 
 // Skill icons as simple SVG components
 const skillIcons: Record<string, JSX.Element> = {
@@ -243,25 +248,28 @@ const SkillsSection = () => {
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-20 right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
       
+      {/* Cute floating cartoon images */}
+      <div className="absolute top-20 right-20 animate-float hidden lg:block">
+        <img src={cuteRocket} alt="Rocket" className="w-24 h-24 object-contain opacity-70 drop-shadow-lg" />
+      </div>
+      <div className="absolute bottom-32 left-16 animate-float-delayed hidden lg:block">
+        <img src={cuteLightbulb} alt="Lightbulb" className="w-20 h-20 object-contain opacity-70 drop-shadow-lg" />
+      </div>
+      <div className="absolute top-1/2 right-12 animate-bounce-slow hidden lg:block">
+        <img src={cuteCoffee} alt="Coffee" className="w-16 h-16 object-contain opacity-70 drop-shadow-lg" />
+      </div>
+      <div className="absolute bottom-48 right-1/4 animate-pulse-slow hidden lg:block">
+        <img src={cuteCodeSymbols} alt="Code" className="w-20 h-20 object-contain opacity-60" />
+      </div>
+      <div className="absolute top-40 left-1/4 animate-float hidden lg:block">
+        <img src={floatingLaptop} alt="Laptop" className="w-24 h-24 object-contain opacity-60" />
+      </div>
+      
       {/* Floating code symbols */}
       <div className="absolute top-32 left-20 text-4xl opacity-10 animate-float">{"</>"}</div>
       <div className="absolute top-48 right-32 text-3xl opacity-10 animate-float-delayed">{"{ }"}</div>
       <div className="absolute bottom-40 left-40 text-3xl opacity-10 animate-float">{"#"}</div>
       <div className="absolute bottom-32 right-20 text-4xl opacity-10 animate-float-delayed">{"( )"}</div>
-      
-      {/* Cute floating icons */}
-      <div className="absolute top-40 right-1/4 opacity-20 animate-bounce-slow">
-        <Coffee className="w-8 h-8 text-primary" />
-      </div>
-      <div className="absolute bottom-48 left-1/4 opacity-20 animate-bounce-slow" style={{ animationDelay: '1s' }}>
-        <Terminal className="w-8 h-8 text-accent-foreground" />
-      </div>
-      <div className="absolute top-1/3 left-16 opacity-20 animate-pulse-slow">
-        <Sparkles className="w-6 h-6 text-primary" />
-      </div>
-      <div className="absolute bottom-1/3 right-16 opacity-20 animate-pulse-slow" style={{ animationDelay: '0.5s' }}>
-        <Zap className="w-6 h-6 text-accent-foreground" />
-      </div>
 
       <div className="container mx-auto px-6 relative">
         <div className="max-w-6xl mx-auto">
