@@ -248,21 +248,21 @@ const SkillsSection = () => {
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-20 right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
       
-      {/* Cute floating cartoon images */}
-      <div className="absolute top-20 right-20 animate-float hidden lg:block">
-        <img src={cuteRocket} alt="Rocket" className="w-24 h-24 object-contain opacity-70 drop-shadow-lg" />
+      {/* Cute floating cartoon images - visible on all screens */}
+      <div className="absolute top-16 right-4 md:top-20 md:right-20 animate-float z-10">
+        <img src={cuteRocket} alt="Rocket" className="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute bottom-32 left-16 animate-float-delayed hidden lg:block">
-        <img src={cuteLightbulb} alt="Lightbulb" className="w-20 h-20 object-contain opacity-70 drop-shadow-lg" />
+      <div className="absolute bottom-20 left-4 md:bottom-32 md:left-16 animate-float-delayed z-10">
+        <img src={cuteLightbulb} alt="Lightbulb" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute top-1/2 right-12 animate-bounce-slow hidden lg:block">
-        <img src={cuteCoffee} alt="Coffee" className="w-16 h-16 object-contain opacity-70 drop-shadow-lg" />
+      <div className="absolute top-1/2 right-2 md:right-12 animate-bounce-slow z-10 hidden sm:block">
+        <img src={cuteCoffee} alt="Coffee" className="w-12 h-12 md:w-16 md:h-16 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute bottom-48 right-1/4 animate-pulse-slow hidden lg:block">
-        <img src={cuteCodeSymbols} alt="Code" className="w-20 h-20 object-contain opacity-60" />
+      <div className="absolute bottom-32 right-1/4 animate-pulse-slow z-10 hidden md:block">
+        <img src={cuteCodeSymbols} alt="Code" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
       </div>
-      <div className="absolute top-40 left-1/4 animate-float hidden lg:block">
-        <img src={floatingLaptop} alt="Laptop" className="w-24 h-24 object-contain opacity-60" />
+      <div className="absolute top-32 left-4 md:top-40 md:left-1/4 animate-float z-10 hidden sm:block">
+        <img src={floatingLaptop} alt="Laptop" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
       </div>
       
       {/* Floating code symbols */}

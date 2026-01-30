@@ -16,18 +16,18 @@ const HeroSection = () => {
         <div className="absolute top-1/2 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-pulse-slow" />
       </div>
 
-      {/* Cute floating cartoon images */}
-      <div className="absolute top-24 right-16 animate-float hidden lg:block">
-        <img src={cuteCoffee} alt="Cute coffee" className="w-20 h-20 object-contain drop-shadow-lg" />
+      {/* Cute floating cartoon images - visible on all screens */}
+      <div className="absolute top-24 right-4 md:right-16 animate-float z-10">
+        <img src={cuteCoffee} alt="Cute coffee" className="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute bottom-32 left-16 animate-float-delayed hidden lg:block">
-        <img src={cuteLightbulb} alt="Cute lightbulb" className="w-24 h-24 object-contain drop-shadow-lg" />
+      <div className="absolute bottom-40 left-4 md:left-16 animate-float-delayed z-10">
+        <img src={cuteLightbulb} alt="Cute lightbulb" className="w-16 h-16 md:w-28 md:h-28 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute top-1/3 right-8 animate-bounce-slow hidden lg:block">
-        <img src={cuteRocket} alt="Cute rocket" className="w-16 h-16 object-contain drop-shadow-lg" />
+      <div className="absolute top-40 right-4 md:top-1/3 md:right-8 animate-bounce-slow z-10">
+        <img src={cuteRocket} alt="Cute rocket" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" />
       </div>
-      <div className="absolute bottom-48 right-1/4 animate-pulse-slow hidden lg:block">
-        <img src={cuteCodeSymbols} alt="Code symbols" className="w-20 h-20 object-contain opacity-80" />
+      <div className="absolute bottom-24 right-8 md:bottom-48 md:right-1/4 animate-pulse-slow z-10 hidden md:block">
+        <img src={cuteCodeSymbols} alt="Code symbols" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
       </div>
 
       {/* Grid pattern overlay */}
@@ -129,52 +129,40 @@ const HeroSection = () => {
           </div>
 
           {/* Right side - Cute Coder Character + Stats */}
-          <div className="hidden lg:block animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
             <div className="relative">
-              {/* Cute coder girl character */}
+              {/* Cute coder girl character - NOW VISIBLE ON ALL SCREENS */}
               <div className="relative z-20 flex justify-center mb-6">
                 <div className="relative">
                   <img 
                     src={coderGirl} 
                     alt="Cute coder girl" 
-                    className="w-72 h-72 object-contain drop-shadow-2xl animate-float"
+                    className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl animate-float"
                   />
                   {/* Floating laptop beside character */}
                   <img 
                     src={floatingLaptop} 
                     alt="Floating laptop" 
-                    className="absolute -right-8 top-1/2 w-24 h-24 object-contain animate-float-delayed drop-shadow-lg"
+                    className="absolute -right-4 md:-right-8 top-1/2 w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain animate-float-delayed drop-shadow-lg"
                   />
                 </div>
               </div>
 
               {/* Stats grid below character */}
-              <div className="relative z-10 grid grid-cols-3 gap-4">
-                <div className="group bg-card p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-4xl">174+</div>
-                  <p className="text-muted-foreground mt-2 text-sm font-medium">LeetCode</p>
-                  <div className="mt-2 flex justify-center gap-1">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors" />
-                    ))}
-                  </div>
+              <div className="relative z-10 grid grid-cols-3 gap-2 md:gap-4">
+                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
+                  <div className="stat-number text-2xl md:text-4xl">174+</div>
+                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">LeetCode</p>
                 </div>
                 
-                <div className="group bg-card p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-4xl">8.88</div>
-                  <p className="text-muted-foreground mt-2 text-sm font-medium">CGPA</p>
-                  <div className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 rounded-full">
-                    <Sparkles size={10} className="text-primary" />
-                    <span className="text-[10px] text-primary font-medium">Top</span>
-                  </div>
+                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
+                  <div className="stat-number text-2xl md:text-4xl">8.88</div>
+                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">CGPA</p>
                 </div>
                 
-                <div className="group bg-card p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-4xl">300+</div>
-                  <p className="text-muted-foreground mt-2 text-sm font-medium">Solved</p>
-                  <div className="mt-2 flex justify-center gap-1">
-                    <span className="text-[10px] px-1.5 py-0.5 bg-accent/20 rounded text-accent-foreground">DSA</span>
-                  </div>
+                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
+                  <div className="stat-number text-2xl md:text-4xl">300+</div>
+                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">Solved</p>
                 </div>
               </div>
 
@@ -184,21 +172,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Mobile stats */}
-          <div className="lg:hidden grid grid-cols-3 gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
-            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
-              <div className="stat-number text-3xl">174+</div>
-              <p className="text-xs text-muted-foreground mt-1">LeetCode</p>
-            </div>
-            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
-              <div className="stat-number text-3xl">8.88</div>
-              <p className="text-xs text-muted-foreground mt-1">CGPA</p>
-            </div>
-            <div className="bg-card p-4 rounded-2xl text-center shadow-sm">
-              <div className="stat-number text-3xl">300+</div>
-              <p className="text-xs text-muted-foreground mt-1">Solved</p>
-            </div>
-          </div>
         </div>
 
         {/* Scroll indicator */}
