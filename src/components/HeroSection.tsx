@@ -1,91 +1,102 @@
-import { ArrowDown, Github, Linkedin, Mail, Sparkles, Code2, Zap } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Terminal } from "lucide-react";
+import { useState, useEffect } from "react";
 import coderGirl from "@/assets/coder-girl-character.png";
-import floatingLaptop from "@/assets/floating-laptop.png";
-import cuteCoffee from "@/assets/cute-coffee.png";
-import cuteRocket from "@/assets/cute-rocket.png";
-import cuteLightbulb from "@/assets/cute-lightbulb.png";
-import cuteCodeSymbols from "@/assets/cute-code-symbols.png";
+
+const roles = ["Software Developer", "Problem Solver", "DSA Enthusiast", "Tech Explorer"];
 
 const HeroSection = () => {
+  const [currentRole, setCurrentRole] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const role = roles[currentRole];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayText(role.slice(0, displayText.length + 1));
+        if (displayText.length === role.length) {
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      } else {
+        setDisplayText(role.slice(0, displayText.length - 1));
+        if (displayText.length === 0) {
+          setIsDeleting(false);
+          setCurrentRole((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, isDeleting ? 40 : 80);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentRole]);
+
   return (
     <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 right-1/4 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float-delayed" />
-        <div className="absolute top-1/2 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-pulse-slow" />
-      </div>
+      {/* Subtle background glow */}
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
 
-      {/* Cute floating cartoon images - visible on all screens */}
-      <div className="absolute top-24 right-4 md:right-16 animate-float z-10">
-        <img src={cuteCoffee} alt="Cute coffee" className="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-      </div>
-      <div className="absolute bottom-40 left-4 md:left-16 animate-float-delayed z-10">
-        <img src={cuteLightbulb} alt="Cute lightbulb" className="w-16 h-16 md:w-28 md:h-28 object-contain drop-shadow-lg" />
-      </div>
-      <div className="absolute top-40 right-4 md:top-1/3 md:right-8 animate-bounce-slow z-10">
-        <img src={cuteRocket} alt="Cute rocket" className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" />
-      </div>
-      <div className="absolute bottom-24 right-8 md:bottom-48 md:right-1/4 animate-pulse-slow z-10 hidden md:block">
-        <img src={cuteCodeSymbols} alt="Code symbols" className="w-20 h-20 md:w-24 md:h-24 object-contain" />
-      </div>
-
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 -z-10 opacity-[0.02]" 
+      {/* Grid pattern */}
+      <div className="absolute inset-0 -z-10 opacity-[0.03]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.5)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
+          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.3)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
         }}
       />
 
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full animate-fade-in">
+          <div className="space-y-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <span className="text-sm font-medium text-primary">
-                Open for Opportunities
+                Available for Opportunities
               </span>
             </div>
 
-            <div className="space-y-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-[1.1]">
-                Hey There,
-                <br />
-                <span className="relative">
-                  I'm{" "}
-                  <span className="relative inline-block">
-                    <span className="gradient-text">Mansi</span>
-                    <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                      <path d="M2 8.5C50 2 150 2 198 8.5" stroke="hsl(var(--accent))" strokeWidth="4" strokeLinecap="round" className="animate-draw-line"/>
-                    </svg>
-                  </span>
-                </span>
+            <div className="space-y-4">
+              <p className="text-muted-foreground text-lg font-medium flex items-center gap-2">
+                <Terminal size={18} className="text-primary" />
+                Hello World, I'm
+              </p>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] tracking-tight">
+                Mansi
+                <span className="text-primary">.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-lg leading-relaxed font-light">
-                Final-year <span className="text-foreground font-medium">CSE student</span> with strong fundamentals in{" "}
-                <span className="text-primary font-medium">programming & DSA</span>. 
-                Passionate about building efficient solutions.
+              <div className="h-12 flex items-center">
+                <span className="text-2xl md:text-3xl text-muted-foreground font-light">
+                  {"<"}
+                </span>
+                <span className="text-2xl md:text-3xl gradient-text font-semibold mx-2">
+                  {displayText}
+                </span>
+                <span className="text-2xl md:text-3xl text-primary animate-pulse font-light">|</span>
+                <span className="text-2xl md:text-3xl text-muted-foreground font-light">
+                  {" />"}
+                </span>
+              </div>
+              <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                Final-year CSE student with strong fundamentals in{" "}
+                <span className="text-foreground">programming & DSA</span>. 
+                Building efficient solutions, one algorithm at a time.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/25"
+                className="group px-7 py-3.5 bg-primary text-primary-foreground rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-primary/20 hover:scale-105"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="flex items-center gap-2">
                   Get In Touch
                   <Mail size={18} className="group-hover:rotate-12 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
                 href="#projects"
-                className="group px-8 py-4 border-2 border-foreground/20 text-foreground rounded-full font-medium hover:border-primary hover:text-primary transition-all hover:bg-primary/5"
+                className="group px-7 py-3.5 border border-border text-foreground rounded-lg font-semibold hover:border-primary/50 hover:bg-primary/5 transition-all"
               >
                 <span className="flex items-center gap-2">
                   View Projects
@@ -94,91 +105,63 @@ const HeroSection = () => {
               </a>
             </div>
 
-            {/* Social Links with enhanced styling */}
-            <div className="flex items-center gap-4 pt-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <span className="text-sm text-muted-foreground">Find me on</span>
-              <div className="h-px w-8 bg-border" />
-              <div className="flex items-center gap-3">
+            {/* Social Links */}
+            <div className="flex items-center gap-4 pt-2">
+              <div className="h-px w-12 bg-border" />
+              {[
+                { icon: Github, href: "https://github.com/Mansiikumarii", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/mansiikumarii", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:mansi15094@gmail.com", label: "Email" },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
-                  href="https://github.com/Mansiikumarii"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
-                  aria-label="GitHub"
+                  key={label}
+                  href={href}
+                  target={label !== "Email" ? "_blank" : undefined}
+                  rel={label !== "Email" ? "noopener noreferrer" : undefined}
+                  className="p-2.5 text-muted-foreground hover:text-primary transition-colors hover:scale-110"
+                  aria-label={label}
                 >
-                  <Github size={20} className="group-hover:rotate-12 transition-transform" />
+                  <Icon size={20} />
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/mansiikumarii"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={20} className="group-hover:rotate-12 transition-transform" />
-                </a>
-                <a
-                  href="mailto:mansi15094@gmail.com"
-                  className="group p-3 bg-card rounded-xl text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20"
-                  aria-label="Email"
-                >
-                  <Mail size={20} className="group-hover:rotate-12 transition-transform" />
-                </a>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Right side - Cute Coder Character + Stats */}
+          {/* Right side - Character + Stats */}
           <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-            <div className="relative">
-              {/* Cute coder girl character - NOW VISIBLE ON ALL SCREENS */}
-              <div className="relative z-20 flex justify-center mb-6">
-                <div className="relative">
-                  <img 
-                    src={coderGirl} 
-                    alt="Cute coder girl" 
-                    className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl animate-float"
-                  />
-                  {/* Floating laptop beside character */}
-                  <img 
-                    src={floatingLaptop} 
-                    alt="Floating laptop" 
-                    className="absolute -right-4 md:-right-8 top-1/2 w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain animate-float-delayed drop-shadow-lg"
-                  />
-                </div>
+            <div className="relative flex flex-col items-center">
+              {/* Character */}
+              <div className="relative mb-8">
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
+                <img
+                  src={coderGirl}
+                  alt="Coder character"
+                  className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain relative z-10 animate-float drop-shadow-2xl"
+                />
               </div>
 
-              {/* Stats grid below character */}
-              <div className="relative z-10 grid grid-cols-3 gap-2 md:gap-4">
-                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-2xl md:text-4xl">174+</div>
-                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">LeetCode</p>
-                </div>
-                
-                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-2xl md:text-4xl">8.88</div>
-                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">CGPA</p>
-                </div>
-                
-                <div className="group bg-card p-3 md:p-5 rounded-2xl text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                  <div className="stat-number text-2xl md:text-4xl">300+</div>
-                  <p className="text-muted-foreground mt-1 md:mt-2 text-xs md:text-sm font-medium">Solved</p>
-                </div>
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 w-full max-w-md">
+                {[
+                  { value: "174+", label: "LeetCode" },
+                  { value: "8.88", label: "CGPA" },
+                  { value: "300+", label: "Problems" },
+                ].map((stat) => (
+                  <div key={stat.label} className="glass-card p-4 text-center hover:border-primary/30 transition-all group">
+                    <div className="stat-number text-2xl md:text-3xl">{stat.value}</div>
+                    <p className="text-muted-foreground text-xs mt-1 font-medium uppercase tracking-wider">{stat.label}</p>
+                  </div>
+                ))}
               </div>
-
-              {/* Decorative elements behind stats */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
             </div>
           </div>
-
         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
           <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
-          <a href="#about" className="p-2 border border-border rounded-full animate-bounce-slow">
-            <ArrowDown size={16} className="text-muted-foreground" />
+          <a href="#about" className="p-2 border border-border rounded-full animate-float">
+            <ArrowDown size={14} className="text-muted-foreground" />
           </a>
         </div>
       </div>
