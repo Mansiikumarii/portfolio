@@ -65,6 +65,9 @@ const skillIcons: Record<string, JSX.Element> = {
   "Jupiter": (
     <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#1a1a2e" width="64" height="64" rx="8"/><circle cx="32" cy="32" r="12" fill="#E36209" opacity="0.9"/><ellipse cx="32" cy="32" rx="22" ry="6" fill="none" stroke="#C97B2A" strokeWidth="1.5" opacity="0.7"/><ellipse cx="32" cy="32" rx="18" ry="10" fill="none" stroke="#D4A44A" strokeWidth="1" opacity="0.5" transform="rotate(30 32 32)"/><circle cx="32" cy="32" r="4" fill="#F5D76E"/></svg>
   ),
+  "Kaggle": (
+    <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#20BEFF" width="64" height="64" rx="8"/><path d="M40 20L28 34l12 14h-7l-8.5-10L22 40.5V44h-5V20h5v16l2.5-2.5L35 20h5z" fill="#fff"/></svg>
+  ),
 };
 
 const skillCategories = [
@@ -91,7 +94,7 @@ const skillCategories = [
   {
     title: "Tools",
     icon: Wrench,
-    skills: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Jupiter"],
+    skills: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Jupiter", "Kaggle"],
   },
   {
     title: "Core Concepts",
