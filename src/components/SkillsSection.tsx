@@ -53,6 +53,18 @@ const skillIcons: Record<string, JSX.Element> = {
   "AWS": (
     <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#232F3E" width="64" height="64" rx="8"/><text x="32" y="40" textAnchor="middle" fill="#FF9900" fontSize="16" fontWeight="bold" fontFamily="sans-serif">AWS</text></svg>
   ),
+  "Jupyter Notebook": (
+    <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#F37626" width="64" height="64" rx="8"/><circle cx="32" cy="20" r="4" fill="#fff"/><circle cx="32" cy="44" r="3" fill="#9E9E9E"/><circle cx="20" cy="36" r="2.5" fill="#616161"/><path d="M18 28c0-2 3-6 14-6s14 4 14 6" stroke="#fff" strokeWidth="2.5" fill="none" strokeLinecap="round"/><path d="M46 36c0 2-3 6-14 6s-14-4-14-6" stroke="#9E9E9E" strokeWidth="2" fill="none" strokeLinecap="round"/></svg>
+  ),
+  "Google Colab": (
+    <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#F9AB00" width="64" height="64" rx="8"/><path d="M20 38c0-8 5.4-14 12-14s12 6 12 14" stroke="#E8710A" strokeWidth="4" fill="none" strokeLinecap="round"/><path d="M24 38c0-5.5 3.6-10 8-10s8 4.5 8 10" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round"/><circle cx="24" cy="38" r="3" fill="#E8710A"/><circle cx="40" cy="38" r="3" fill="#E8710A"/></svg>
+  ),
+  "GCP": (
+    <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#4285F4" width="64" height="64" rx="8"/><polygon points="32,14 48,40 16,40" fill="none" stroke="#fff" strokeWidth="3" strokeLinejoin="round"/><polygon points="32,22 42,38 22,38" fill="#fff" fillOpacity="0.3"/><circle cx="32" cy="14" r="3" fill="#EA4335"/><circle cx="48" cy="40" r="3" fill="#34A853"/><circle cx="16" cy="40" r="3" fill="#FBBC05"/></svg>
+  ),
+  "Jupiter": (
+    <svg viewBox="0 0 64 64" className="w-7 h-7"><rect fill="#1a1a2e" width="64" height="64" rx="8"/><circle cx="32" cy="32" r="12" fill="#E36209" opacity="0.9"/><ellipse cx="32" cy="32" rx="22" ry="6" fill="none" stroke="#C97B2A" strokeWidth="1.5" opacity="0.7"/><ellipse cx="32" cy="32" rx="18" ry="10" fill="none" stroke="#D4A44A" strokeWidth="1" opacity="0.5" transform="rotate(30 32 32)"/><circle cx="32" cy="32" r="4" fill="#F5D76E"/></svg>
+  ),
 };
 
 const skillCategories = [
@@ -74,12 +86,12 @@ const skillCategories = [
   {
     title: "Cloud & DevOps",
     icon: Globe,
-    skills: ["Google Cloud", "AWS", "Linux"],
+    skills: ["GCP", "Google Colab", "AWS", "Linux"],
   },
   {
     title: "Tools",
     icon: Wrench,
-    skills: ["Git", "GitHub", "VS Code"],
+    skills: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Jupiter"],
   },
   {
     title: "Core Concepts",
@@ -155,7 +167,7 @@ const SkillsSection = () => {
                 {[
                   { value: "7+", label: "Languages" },
                   { value: "5+", label: "Frameworks" },
-                  { value: "15+", label: "Tools" },
+                  { value: "20+", label: "Tools" },
                 ].map((stat, i) => (
                   <div key={stat.label} className="flex items-center gap-4">
                     {i > 0 && <div className="w-px h-8 bg-border hidden md:block" />}
